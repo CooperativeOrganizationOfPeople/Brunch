@@ -74,7 +74,7 @@ def edit(request, restaurant_id):
         #Grabs info from edit page and saves it in the current restaurant instance
         name = request.POST['Restaurant Name']
         location = request.POST['Restaurant Location']
-        status = request.POST['Restaurant Status']
+        status = request.POST.has_key('Restaurant Status')
 
         restaurant.name = name
         restaurant.location = location

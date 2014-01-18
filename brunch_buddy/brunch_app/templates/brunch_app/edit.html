@@ -39,9 +39,18 @@
         <label class="textbox">
           Restaurant Location:<input type="text2" name="Restaurant Location" class="form-control" value="{{ restaurant.location }}" required>
         </label>
-        <label class="textbox">
-          Restaurant Status:<input type="text2" name="Restaurant Status" class="form-control" value="{{ restaurant.status }}" required>
-        </label>
+        <!--<label class="textbox">
+          Restaurant Status:<input type="text2" name="Restaurant Status" class="form-control" value="{{ restaurant.status }}" required >
+        </label>-->
+        {% if restaurant.status %}       
+          <label class="checkbox">
+            Restaurant Status:<input type="checkbox" name="Restaurant Status" class="form-inline" value="True" checked>
+          </label>
+        {% else %}
+          <label class="checkbox">
+            <input type="checkbox" name="Restaurant Status" class="form-inline" value="True">Restaurant Status
+          </label>
+        {% endif %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
       </form>
 
