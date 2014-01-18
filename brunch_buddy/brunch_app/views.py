@@ -11,7 +11,7 @@ from django import forms
 
 
 def index (request):
-    bucket_list = Restaurant.objects.order_by('-name')[:10]
+    bucket_list = Restaurant.objects.order_by('-name')[:20]
     # template = loader.get_template('brunch_app/index.html')
     # context = RequestContext(request, {
     #     'bucket_list': bucket_list,
@@ -32,12 +32,14 @@ def detail(request, restaurant_id):
 def add(request):
     
     if request.method == 'POST': # If the form has been submitted...
-        
-        #Gets post from Form for the restaraunt name and stores it  
+
         subject = request.POST['Restaraunt']
-        print subject
-        
-        return HttpResponseRedirect('') # Redirect after POST
-        
+
+        restaurant = Restaurant(name=subject, location="Junk", status=False)
+
+        restaurant.save()
+        #return HttpResponseRedirect('') # Redirect after POST
+
+        return HttpResponseRedirect('../brunch_app/') # Redirect after POST
     
     return render(request, 'brunch_app/add.html')

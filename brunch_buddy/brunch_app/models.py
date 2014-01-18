@@ -6,6 +6,7 @@ class Neighborhood(models.Model):
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=50)
-    location = models.ForeignKey(Neighborhood)
+    #location = models.ForeignKey(Neighborhood)
+    location = models.CharField(max_length=50)
     status = models.BooleanField()
 
