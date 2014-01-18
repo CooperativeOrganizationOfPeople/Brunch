@@ -10,7 +10,6 @@ from django.http import HttpResponseRedirect
 from django import forms
 
 #testing
-from django.http import HttpResponse
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
@@ -22,6 +21,7 @@ def index (request):
 
     context = {'bucket_list': bucket_list}
     return render(request, 'brunch_app/index.html', context)
+
 
 def detail(request, restaurant_id):
     # try:
@@ -35,37 +35,48 @@ def detail(request, restaurant_id):
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
 
+
 def add(request):
     
     if request.method == 'POST': 
 
         subject = request.POST['Restaraunt']
-
         restaurant = Restaurant(name=subject, location="Junk", status=False)
-
         restaurant.save()
-        
+
         destination = str(restaurant.id)+"/confirm.html"
-#        return HttpResponseRedirect('confirm.html', {'restaurant':restaurant}) # Redirect after POST
         return HttpResponseRedirect(destination)
-        #return HttpResponseRedirect('confirm.html')
+
     return render(request, 'brunch_app/add.html')
 
 
 def confirm (request, restaurant_id):
 
-    #initialize choices array
-    choices = []
-    #add entered restaurant to choices
-    restaurant = Restaurant.objects.get(pk=restaurant_id)
-    choices.append(restaurant)
-    #make call to Yelp API
-    #grab top x
-    #pass back to view for client decision
-    context = {'choices': choices}
-    return render(request, 'brunch_app/confirm.html', context)
+    if request.method =='GET':
+        #initialize choices array
+        choices = []
+        #add entered restaurant to choices
+        restaurant = Restaurant.objects.get(pk=restaurant_id)
 
+        #add now unsaved restaurant to choices array
+        choices.append(restaurant)
 
+        #delete saved instance for garbage collection
+        restaurant.delete()
+
+        #make call to Yelp API
+        #grab top x
+        #pass back to view for client decision
+        context = {'choices': choices}
+        return render(request, 'brunch_app/confirm.html', context)
+    elif request.method =='POST':
+        #update the object based on selection
+        restaurant = Restaurant(name="Modified", location="Junk", status=False)
+        #save the object
+        restaurant.save()
+        #HttpRedirect to home
+        return HttpResponseRedirect('../../brunch_app')
+        
 
 def edit(request, restaurant_id):
    
@@ -85,3 +96,5 @@ def edit(request, restaurant_id):
 
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/edit.html', {'restaurant': restaurant})
+
+#def selectFromList ()
