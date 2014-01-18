@@ -1,5 +1,7 @@
 from yelpapi import YelpAPI
 import argparse
+import json
+from pprint import pprint
 
 # consumer_key = "OkRdS7BXEqjjJhSerzD6GA"
 # consumer_secret = "aCwAgo5LWi_b9dgwwMdVNQHRol0"
@@ -36,27 +38,27 @@ print('region center (lat,long): %f,%f\n' % (response['region']['center']['latit
 
 print 'total number of responses:', response['total']
 print 'number of returned responses:', len(response['businesses']), '\n'
-i = 1
-
-for business in response['businesses']:
-    try:
-        location = business["location"]["neighborhoods"][0]
-    except:
-        #print business["location"]
-        location = business["location"]["display_address"][0]
-    print i, " ", business['name'], " - ", location
-    for key in business:
-        print "\t", key, " ", business[key]
-    i += 1
 
 if args.limit is None:
     while offset<response['total']:
         offset += 20
-        response = yelp_api.search_query(term=args.term, category_filter=args.category, limit=args.limit, radius_filter=args.radius, location='washington, dc', sort=0, offset=offset)
-        for business in response['businesses']:
-            print i, " ", business['name'], " ", business
-            i += 1
+        next_response = yelp_api.search_query(term=args.term, category_filter=args.category, limit=args.limit, radius_filter=args.radius, location='washington, dc', sort=0, offset=offset)
+        response['businesses'].append(next_response['businesses'])  
 
+with open("data.json", "w") as outfile:
+    json.dump(response, outfile, indent=4)
+
+# i = 1
+# for business in response['businesses']:
+#     try:
+#         location = business["location"]["neighborhoods"][0]
+#     except:
+#         #print business["location"]
+#         location = business["location"]["display_address"][0]
+#     print i, " ", business['name'], " - ", location
+#     pprint business
+#     i += 1
+        
 
 print('\n-------------------------------------------------------------------------\n')
 
