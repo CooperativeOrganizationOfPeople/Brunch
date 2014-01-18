@@ -1,0 +1,43 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-editpage {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-editpage .form-editpage-heading{
+  margin-bottom: 10px;
+}
+.form-editpage .textbox {
+  margin-top: 10px;
+}
+.form-editpage .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-editpage .form-control:focus {
+  z-index: 2;
+}
+.form-editpage input[type="text"] {
+  margin-bottom: -1px;
+  width: 300px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-editpage input[type="text2"] {
+  margin-bottom: 10px;
+  width: 300px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+

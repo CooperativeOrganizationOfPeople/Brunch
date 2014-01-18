@@ -27,19 +27,42 @@ def detail(request, restaurant_id):
     # except Restaurant.DoesNotExist:
     #         raise Http404
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+    if request.method == 'POST': # If the form has been submitted...
+        
+        restaurant.delete()
+        return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
 
 def add(request):
     
-    if request.method == 'POST': # If the form has been submitted...
+    if request.method == 'POST': 
 
         subject = request.POST['Restaraunt']
 
         restaurant = Restaurant(name=subject, location="Junk", status=False)
 
         restaurant.save()
-        #return HttpResponseRedirect('') # Redirect after POST
+        
 
         return HttpResponseRedirect('../brunch_app/') # Redirect after POST
     
     return render(request, 'brunch_app/add.html')
+
+def edit(request, restaurant_id):
+   
+    restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+    if request.method == 'POST': 
+        #Grabs info from edit page and saves it in the current restaurant instance
+        name = request.POST['Restaurant Name']
+        location = request.POST['Restaurant Location']
+        status = request.POST['Restaurant Status']
+
+        restaurant.name = name
+        restaurant.location = location
+        restaurant.status = status
+
+        restaurant.save()
+        
+
+        return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
+    return render(request, 'brunch_app/edit.html', {'restaurant': restaurant})
