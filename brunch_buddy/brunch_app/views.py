@@ -43,3 +43,18 @@ def add(request):
         return HttpResponseRedirect('../brunch_app/') # Redirect after POST
     
     return render(request, 'brunch_app/add.html')
+
+
+def confirm(request, restaurant_id):
+    #initialize choices array
+    choices = []
+    #This restaurant was entered via add view
+    restaurant = Restaurant.objects.get(pk=restaurant_id)
+    choices.add(restaurant)
+
+    #call the yelp API and search for restaurant
+
+    #grab top 5 to present to user
+
+    #pass 5 suggestions to the client to chooose
+    return render(request, 'brunch_app/confirm.html, {'choices':choices)
