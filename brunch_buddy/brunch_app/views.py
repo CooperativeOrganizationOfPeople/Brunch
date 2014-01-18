@@ -24,3 +24,6 @@ def detail(request, restaurant_id):
     #         raise Http404
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
+
+def add(request):
+    return render(request, 'brunch_app/add.html')
