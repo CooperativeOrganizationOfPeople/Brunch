@@ -1,0 +1,9 @@
+{% if bucket_list %}
+    <ul>
+    {% for restaurant in bucket_list %}
+        <li><a href="{% url 'detail' restaurant.id %}">{{ restaurant.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No restaurants have been added.</p>
+{% endif %}
