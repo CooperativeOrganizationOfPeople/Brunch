@@ -1,0 +1,222 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fo",
+				"forms"
+			],
+			[
+				"rest",
+				"restaurant_id"
+			],
+			[
+				"get",
+				"get_object_or_404"
+			],
+			[
+				"Re",
+				"Restaurant"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"res",
+				"restaurant"
+			],
+			[
+				"W",
+				"World"
+			],
+			[
+				"C",
+				"console"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/templates/brunch_app/index.html",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/urls.py",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/templates/brunch_app/detail.html",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/views.py",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/static/bootstrap/dist/css/EditPage-template.css",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/templates/brunch_app/edit.html",
+		"/C/Users/Charles/Documents/Test.html",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/static/bootstrap/dist/css/DetailPage-template.css",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/static/bootstrap/dist/css/DetailPage-template",
+		"/C/Users/Charles/Documents/brunch_buddy/brunch_app/models.py",
+		"/C/Users/Charles/Documents/brunch_app/views.py",
+		"/C/Users/Charles/Documents/brunch_app/templates/brunch_app/add.html",
+		"/C/Users/Charles/Documents/GitHub/Brunch/brunch_buddy/brunch_app/views.py",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/urls.py",
+		"/Users/nickfox/development/hackathon/Brunch/bootstrap_template_page2.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/views.py",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/index.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/add.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/models.py",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/old_index.html",
+		"/Users/nickfox/development/hackathon/Brunch/bootstrap_template.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/detail.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_buddy/urls.py",
+		"/Users/nickfox/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/nickfox/development/hackathon/test.py",
+		"/Users/nickfox/wikitest.py",
+		"/Users/nickfox/development/web/lcaMockups/staff.html",
+		"/Users/nickfox/Downloads/iOS7-Stage5-V1/CrystalBall/CrystalBall/THCrystalBall.m",
+		"/Users/nickfox/Downloads/iOS7-Stage5-V1/CrystalBall/CrystalBall/THCrystalBall.h",
+		"/Users/nickfox/Documents/development/javascript/intro/IntroToProgrammingJavascript.html",
+		"/Users/nickfox/Documents/development/web/homepage/stylesheet.css",
+		"/Users/nickfox/Documents/development/web/pageShell.html",
+		"/Users/nickfox/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/nickfox/Documents/development/web/nickPage/index.html"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"<!DOCTYPE HTML>\n<html>\n	<head>\n	</head>\n\n	<body>\n\n	<h1>This is a test</h1>\n\n	</body>\n\n</html>\n",
+			">\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "views.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+		],
+		"width": 228.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
