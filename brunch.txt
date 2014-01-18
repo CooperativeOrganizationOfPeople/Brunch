@@ -1,0 +1,11 @@
+Social:
+
+IIDish, agree/disagree with status of info
+Rep system, required to suggest change to current info. Agree/disagree with changes
+Changes done based on set of options: price change, new deal altogether, place closed.
+
+
+Selection:
+Brunch-roulette- Options like blocks from metro, lines, neighborhood, bottomless
+
+APIs, what can we get easily?
