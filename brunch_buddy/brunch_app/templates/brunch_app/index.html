@@ -10,11 +10,12 @@
 
     <title>Add Entry Template for Bootstrap</title>
 
+    {% load staticfiles %}
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap\dist\css\bootstrap.css" rel="stylesheet">
+    <link type="text/css" href="{%static 'bootstrap\dist\css\bootstrap.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="bootstrap\dist\css\Add-entry-template.css" rel="stylesheet">
+    <link type="text/css" href="{%static 'bootstrap\dist\css\Add-entry-template.css' %}" rel="stylesheet">
 
     
   </head>
