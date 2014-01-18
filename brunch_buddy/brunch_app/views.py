@@ -39,7 +39,12 @@ def add(request):
     
     if request.method == 'POST': 
 
+        # get serach term from user
         subject = request.POST['Restaraunt']
+
+        # query yelp API
+
+        # 
 
         restaurant = Restaurant(name=subject, location="Junk", status=False)
 
