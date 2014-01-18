@@ -5,6 +5,10 @@ from django.http import Http404
 #from django.template import RequestContext, loader
 
 from brunch_app.models import Restaurant
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django import forms
+
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:10]
@@ -26,4 +30,14 @@ def detail(request, restaurant_id):
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
 
 def add(request):
+    
+    if request.method == 'POST': # If the form has been submitted...
+        
+        #Gets post from Form for the restaraunt name and stores it  
+        subject = request.POST['Restaraunt']
+        print subject
+        
+        return HttpResponseRedirect('') # Redirect after POST
+        
+    
     return render(request, 'brunch_app/add.html')
