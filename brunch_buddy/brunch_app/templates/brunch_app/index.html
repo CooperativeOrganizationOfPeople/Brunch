@@ -58,11 +58,29 @@
  -->
 
                 {% if bucket_list %}
-                    <ul>
-                    {% for restaurant in bucket_list %}
-                        <li><a href="{% url 'detail' restaurant.id %}">{{ restaurant.name }}</a></li>
-                    {% endfor %}
-                    </ul>
+                    <table class="table table-bordered" class="form-control" id="Restaruant table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for restaurant in bucket_list %}
+                            <tr>
+                                <td><a href="{% url 'detail' restaurant.id %}">{{ restaurant.name }}</a></td>
+                                <td>{{ restaurant.location }}</td>
+                                <td>
+                                    {% if restaurant.status %}       
+                                     
+                                        <input type="checkbox" name="Restaurant Status" class="form-inline" value="True" checked disabled>
+                                     
+                                    {% else %}
+                                      
+                                        <input type="checkbox" name="Restaurant Status" class="form-inline" value="True" disabled>
+                                      
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
                 {% else %}
                     <p>No restaurants have been added.</p>
                 {% endif %}
