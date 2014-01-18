@@ -40,7 +40,16 @@ def add(request):
     
     if request.method == 'POST': 
 
+        # get serach term from user
         subject = request.POST['Restaraunt']
+<<<<<<< HEAD
+=======
+
+        # query yelp API
+
+        # 
+
+>>>>>>> 48293026d4cc76874b09f9f499c745dd449f485f
         restaurant = Restaurant(name=subject, location="Junk", status=False)
         restaurant.save()
 
@@ -85,7 +94,7 @@ def edit(request, restaurant_id):
         #Grabs info from edit page and saves it in the current restaurant instance
         name = request.POST['Restaurant Name']
         location = request.POST['Restaurant Location']
-        status = request.POST['Restaurant Status']
+        status = request.POST.has_key('Restaurant Status')
 
         restaurant.name = name
         restaurant.location = location
