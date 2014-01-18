@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/
     url(r'^(?P<restaurant_id>\d+)/$', views.detail, name='detail'),
-    url(r'^add.html', views.add, name='add')
+    url(r'^add.html', views.add, name='add'),
+    url(r'^(?P<restaurant_id>\d+)/', views.edit, name='edit')
 
 )
