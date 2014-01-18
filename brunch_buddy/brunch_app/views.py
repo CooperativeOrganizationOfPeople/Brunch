@@ -9,6 +9,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django import forms
 
+#testing
+from django.http import HttpResponse
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
@@ -43,27 +45,28 @@ def add(request):
 
         restaurant.save()
         
-
-        return HttpResponseRedirect('../brunch_app/') # Redirect after POST
-    
+        destination = str(restaurant.id)+"/confirm.html"
+#        return HttpResponseRedirect('confirm.html', {'restaurant':restaurant}) # Redirect after POST
+        return HttpResponseRedirect(destination)
+        #return HttpResponseRedirect('confirm.html')
     return render(request, 'brunch_app/add.html')
 
-<<<<<<< HEAD
 
-def confirm(request, restaurant_id):
+def confirm (request, restaurant_id):
+
     #initialize choices array
     choices = []
-    #This restaurant was entered via add view
+    #add entered restaurant to choices
     restaurant = Restaurant.objects.get(pk=restaurant_id)
-    choices.add(restaurant)
+    choices.append(restaurant)
+    #make call to Yelp API
+    #grab top x
+    #pass back to view for client decision
+    context = {'choices': choices}
+    return render(request, 'brunch_app/confirm.html', context)
 
-    #call the yelp API and search for restaurant
 
-    #grab top 5 to present to user
 
-    #pass 5 suggestions to the client to chooose
-    return render(request, 'brunch_app/confirm.html, {'choices':choices)
-=======
 def edit(request, restaurant_id):
    
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
@@ -82,4 +85,3 @@ def edit(request, restaurant_id):
 
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/edit.html', {'restaurant': restaurant})
->>>>>>> c890a25d795f5f2249acafcbbfc5d68d61da0ce2

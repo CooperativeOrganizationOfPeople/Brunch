@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="bootstrap\dist\ico\favicon.png">
+
+    <title>Add Entry Template for Bootstrap</title>
+
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" href="{%static 'bootstrap\dist\css\bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link type="text/css" href="{%static 'bootstrap\dist\css\Add-entry-template.css' %}" rel="stylesheet">
+
+    
+  </head>
+
+    <body>
+    <!--Bar that can be used at top of page -->
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div class="container">
+        <!--Form holds a button and the table -->
+            <form class="form-signin" role="form" id="frm1" action="add.html">
+                <h2 class="form-signin-heading">Add Restaruant Entry</h2>
+                <button class="btn btn-lg btn-primary" class="form-inline" role="button">Add Entry &raquo;</button><!--Button links to page with text box -->
+<!--                 <table class="table table-bordered" class="form-control" id="Restaruant table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
+ -->
+
+                {% if choices %}
+                    <ul>
+                    {% for restaurant in choices %}
+                        <li>{{ restaurant.name }} - {{ restaurnat.location }} - {{ restaurant.status }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No restaurants have been added.</p>
+                {% endif %}
+
+                
+            </form>
+
+        </div> <!-- /container -->
+        
+        
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+        <script src="bootstrap\dist\js\jquery-2.0.3.min.js"></script>
+        <script src="bootstrap\dist\js\bootstrap.min.js"></script>
+
+    </body>
+</html>
