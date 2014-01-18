@@ -34,16 +34,14 @@ print('region center (lat,long): %f,%f\n' % (response['region']['center']['latit
 print 'total number of responses:', response['total']
 print 'number of returned responses:', len(response['businesses'])
 
-
-
 if args.limit is None:
     while offset<response['total']:
         offset += 20
         print 'fetch with offset', offset
         next_response = yelp_api.search_query(term=args.term, category_filter=args.category, limit=args.limit, radius_filter=args.radius, location='washington, dc', sort=0, offset=offset)
         print 'returned', len(next_response['businesses']), 'responses out of', next_response['total']
-        response['businesses'].append(next_response['businesses']) 
-        print next_response['businesses']
+        for entry in next_response['businesses']:
+            response['businesses'].append(entry) 
         print 'appending to master list for a total of', len(response['businesses']), 'responses'
 
 print 'expected number:', response['total']
