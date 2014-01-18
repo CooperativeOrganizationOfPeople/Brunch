@@ -1,1 +1,0 @@
-print "Howdy Y'all"
