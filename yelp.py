@@ -3,11 +3,6 @@ import argparse
 import json
 from pprint import pprint
 
-# consumer_key = "OkRdS7BXEqjjJhSerzD6GA"
-# consumer_secret = "aCwAgo5LWi_b9dgwwMdVNQHRol0"
-# token = "9ucuAipHhF9-eUAxkOG0ZfqwTalRcFJG"
-# token_secret = "uAIULU75hLVrPhCa7KqtwB3ifaU"
-
 argparser = argparse.ArgumentParser(description='Example Yelp queries using yelpy. Visit http://www.yelp.com/developers/manage_api_keys to get the necessary API keys.')
 argparser.add_argument('consumer_key', type=str, help='Yelp v2.0 API consumer key')
 argparser.add_argument('consumer_secret', type=str, help='Yelp v2.0 API consumer secret')
@@ -37,13 +32,22 @@ print('region center (lat,long): %f,%f\n' % (response['region']['center']['latit
 #                 business['review_count'], ', '.join(business['location']['display_address'])))
 
 print 'total number of responses:', response['total']
-print 'number of returned responses:', len(response['businesses']), '\n'
+print 'number of returned responses:', len(response['businesses'])
+
+
 
 if args.limit is None:
     while offset<response['total']:
         offset += 20
+        print 'fetch with offset', offset
         next_response = yelp_api.search_query(term=args.term, category_filter=args.category, limit=args.limit, radius_filter=args.radius, location='washington, dc', sort=0, offset=offset)
-        response['businesses'].append(next_response['businesses'])  
+        print 'returned', len(next_response['businesses']), 'responses out of', next_response['total']
+        response['businesses'].append(next_response['businesses']) 
+        print next_response['businesses']
+        print 'appending to master list for a total of', len(response['businesses']), 'responses'
+
+print 'expected number:', response['total']
+print 'actual number:', len(response['businesses'])
 
 with open("data.json", "w") as outfile:
     json.dump(response, outfile, indent=4)
