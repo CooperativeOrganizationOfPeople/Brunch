@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django import forms
 import opentable_api
+
 #testing
 
 def index (request):
@@ -42,7 +43,7 @@ def confirm (request):
         #initialize choices array
         choices = []
         #add entered restaurant to choices
-        restaurant = Restaurant(name=request.POST['Restaurant'], location="Junk", status=False)
+        restaurant = Restaurant(name=request.POST['Restaurant'], location="Unknown", status=False)
         #add now unsaved restaurant to choices array
         choices.append(restaurant)
 
@@ -55,6 +56,11 @@ def confirm (request):
 
         for item in new_list:
             r = Restaurant(name=item, location="Junk", status=False)
+            
+            if (item.index(" - ")!=-1):
+                parts = item.split(" - ")
+                r.name = parts[0]
+                r.location = parts[1]
             choices.append(r)
         #grab top x
         #pass back to view for client decision
