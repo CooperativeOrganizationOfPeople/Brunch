@@ -60,7 +60,7 @@ class opentable_api:
     # Returns a list of restaurant names
     def getRestaurants(self,rest_name):
         rest_url  = 'http://opentable.herokuapp.com/api/restaurants'
-        query_url = rest_url + "?name="+rest_name
+        query_url = rest_url + "?name="+rest_name.replace(' ','')
         area_key = "area"
         dc_value = "Washington, D.C. Area"
 
