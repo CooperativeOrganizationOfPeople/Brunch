@@ -8,7 +8,8 @@ from brunch_app.models import Restaurant
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django import forms
-
+import opentable_api
+#testing
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
@@ -70,6 +71,15 @@ def confirm (request):
         #delete saved instance for garbage collection
 
         #make call to Yelp API
+        # Opentable for now
+        ot_api = opentable_api.opentable_api()
+        new_list = ot_api.getRestaurants(restaurant.name)
+        if len(new_list) > 5:
+            new_list = new_list[:5]
+
+        for item in new_list:
+            r = Restaurant(name=item, location="Junk", status=False)
+            choices.append(r)
         #grab top x
         #pass back to view for client decision
         context = {'choices': choices}
