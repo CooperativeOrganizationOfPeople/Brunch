@@ -29,19 +29,7 @@ def detail(request, restaurant_id):
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
 
 
-<<<<<<< HEAD
-        # get serach term from user
-        subject = request.POST['Restaurant']
-
-        # query yelp API
-
-        # 
-
-        restaurant = Restaurant(name=subject, location="Junk", status=False)
-=======
 def add(request):
->>>>>>> 184d26f36c407deab139a2f4804202c452a7804c
-
     return render(request, 'brunch_app/add.html')
 
 

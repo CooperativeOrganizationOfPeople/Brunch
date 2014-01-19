@@ -9,4 +9,8 @@ class Restaurant(models.Model):
     #location = models.ForeignKey(Neighborhood)
     location = models.CharField(max_length=50)
     status = models.BooleanField()
+    #phone = models.
+    #rating = models.
+    #number_of_reviews = models.
+    
 
