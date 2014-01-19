@@ -31,20 +31,20 @@ class yelp_api():
     def min_query(self, term, limit=5, category='', radius=None, location='washington, dc', sort=0, offset=0):
         '''A minimal query that returns a simple dictionary with the following key values. Every value is a string except for categories, which is a list. 
         The values returned include name, phone, display phone, location, categories, yelp rating, yelp review count, a rating image url, yelp url, and yelp mobile url
-        To simplify/minimize location, we return the neighboorhood if available, else we return the city.'''
+        To simplify/minimize location, we return the neighborhood if available, else we return the city.'''
         # create YelpAPI object
         yelp_api = YelpAPI(self.consumer_key, self.consumer_secret, self.token, self.token_secret)
 
         response = yelp_api.search_query(term=term, category_filter=category, limit=limit, radius_filter=radius, location=location, sort=sort, offset=offset)
         min_response = []
         for entry in response['businesses']:
-            if 'neighboorhood' in entry['location']:
-                location = entry['location']['neighboorhood']
+            if 'neighborhoods' in entry['location'].keys():
+                location = entry['location']['neighborhoods'][0]
             elif 'city' in entry['location']:
                 location = entry['location']['city']
             else:
-                location = 'No Neighboorhood or City... :('
-            tmp_dict = {'name':entry['name'], 'phone':entry['phone'], 'display_phone':entry['display_phone'], 'location':location}
+                location = 'No neighborhood or city listed :('
+            tmp_dict = {'name':entry['name'], 'phone':entry['phone'], 'display_phone':entry['display_phone'], 'location':location, 'categories':entry['categories'], 'rating':entry['rating'], 'review_count':entry['review_count'], 'rating_img_url':entry['rating_img_url'], 'url':entry['url'], 'mobile_url':entry['mobile_url']}
             min_response.append(tmp_dict)
         return min_response        
 
