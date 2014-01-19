@@ -76,7 +76,9 @@ def confirmPart2 (request):
 
     data = request.POST['choice']
     attributes = data.split(',')
-    restaurant = Restaurant(name=attributes[0], location=attributes[1], status=attributes[2])
+    restaurant = Restaurant(name=attributes[0], location=attributes[1], status=False)
+    if (attributes[2]=='True'):
+        restaurant.status=True
     restaurant.save()
     return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
 
