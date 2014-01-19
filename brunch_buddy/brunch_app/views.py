@@ -9,8 +9,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django import forms
 import opentable_api
+from yelp_api import yelp_api
 
-#testing
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
@@ -47,19 +47,11 @@ def confirm (request):
         choices.append(restaurant)
 
         #make call to Yelp API
-        # Opentable for now
-        ot_api = opentable_api.opentable_api()
-        new_list = ot_api.getRestaurants(restaurant.name)
-        if len(new_list) > 5:
-            new_list = new_list[:5]
+        yelp_obj = yelp_api()
+        response_list = yelp_obj.min_query(term=restaurant.name)
 
-        for item in new_list:
-            r = Restaurant(name=item, location="Junk", status=False)
-            
-            if (item.index(" - ")!=-1):
-                parts = item.split(" - ")
-                r.name = parts[0]
-                r.location = parts[1]
+        for entry in response_list:
+            r = Restaurant(name=entry['name'], location=entry['location'], status=False)
             choices.append(r)
         #grab top x
         #pass back to view for client decision
