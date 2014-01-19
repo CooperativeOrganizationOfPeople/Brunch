@@ -14,7 +14,7 @@ class Restaurant(models.Model):
     categories = models.CharField(max_length=200)
     rating = models.IntegerField()
     review_count = models.IntegerField()
-    rating_img_url = models.URLField()
-    yelp_url = models.URLField()
-    yelp_mobile_url = models.URLField()
+    #rating_img_url = models.URLField()
+    #yelp_url = models.URLField()
+    #yelp_mobile_url = models.URLField()
     
