@@ -45,15 +45,19 @@
 
         <div class="container">
         <!--Form holds a button and the table -->
-            <form class="form-signin" role="form" id="frm2" method="post">{% csrf_token %}
-                <button class="btn btn-lg btn-primary" class="form-inline" role="submit">Confirm Entry</button><!--Back to 
- -->
+            <form class="form-signin" role="form" id="frm2" action="confirm2" method="post">{% csrf_token %}
+                <button class="btn btn-lg btn-primary" class="form-inline" role="submit">Confirm Entry</button>
+                <br/>
+                <br/>
                 {% if choices %}
-                    <ul>
                     {% for restaurant in choices %}
-                        <li>{{ restaurant.name }} - {{ restaurnat.location }} - {{ restaurant.status }}</li>
+    
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ restaurant.name }},{{ restaurant.location }},{{ restaurant.status }}" />
+                        <label for="choice{{ forloop.counter }}">{{ restaurant.name }} - {{ restaurant.location }} - {{ restaurant.status }}</label><br />
+
+                     <!-- <li>{{ restaurant.name }} - {{ restaurnat.location }} - {{ restaurant.status }}</li> -->
                     {% endfor %}
-                    </ul>
+                    
                 {% else %}
                     <p>No restaurants have been added.</p>
                 {% endif %}
