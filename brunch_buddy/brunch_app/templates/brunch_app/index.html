@@ -8,9 +8,11 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="bootstrap\dist\ico\favicon.png">
 
-    <title>Add Entry Template for Bootstrap</title>
+    <title>Add Restaurant Entry></title>
 
     {% load staticfiles %}
+
+    <link rel="shortcut icon" href="{%static 'bootstrap\dist\ico\favicon.png' %}">
     <!-- Bootstrap core CSS -->
     <link type="text/css" href="{%static 'bootstrap\dist\css\bootstrap.css' %}" rel="stylesheet">
 
@@ -46,7 +48,7 @@
         <div class="container">
         <!--Form holds a button and the table -->
             <form class="form-signin" role="form" id="frm1" action="add.html">
-                <h2 class="form-signin-heading">Add Restaruant Entry</h2>
+                <h2 class="form-signin-heading">Add Restaurant Entry</h2>
                 <button class="btn btn-lg btn-primary" class="form-inline" role="button">Add Entry &raquo;</button><!--Button links to page with text box -->
 <!--                 <table class="table table-bordered" class="form-control" id="Restaruant table">
                     <tr>
@@ -58,11 +60,29 @@
  -->
 
                 {% if bucket_list %}
-                    <ul>
-                    {% for restaurant in bucket_list %}
-                        <li><a href="{% url 'detail' restaurant.id %}">{{ restaurant.name }}</a></li>
-                    {% endfor %}
-                    </ul>
+                    <table class="table table-bordered" class="form-control" id="Restaruant table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                        </tr>
+                        {% for restaurant in bucket_list %}
+                            <tr>
+                                <td><a href="{% url 'detail' restaurant.id %}">{{ restaurant.name }}</a></td>
+                                <td>{{ restaurant.location }}</td>
+                                <td>
+                                    {% if restaurant.status %}       
+                                     
+                                        <input type="checkbox" name="Restaurant Status" class="form-inline" value="True" checked disabled>
+                                     
+                                    {% else %}
+                                      
+                                        <input type="checkbox" name="Restaurant Status" class="form-inline" value="True" disabled>
+                                      
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
                 {% else %}
                     <p>No restaurants have been added.</p>
                 {% endif %}

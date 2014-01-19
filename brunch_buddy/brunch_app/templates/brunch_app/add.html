@@ -8,9 +8,12 @@
         <meta name="author" content="">
         <link rel="shortcut icon" href="bootstrap\dist\ico\favicon.png">
 
-        <title>Add Entry Template for Bootstrap</title>
+
+        <title>Add Entry</title>
 
         {% load staticfiles %}
+
+        <link rel="shortcut icon" href="{%static 'bootstrap\dist\ico\favicon.png' %}">
         <!-- Bootstrap core CSS -->
         <link type="text/css" href="{%static 'bootstrap\dist\css\bootstrap.css' %}" rel="stylesheet">
 
@@ -52,10 +55,10 @@
 
         <div class="container">
         <!--Form holds textbox and submit button -->
-            <form class="form-signin" role="form" id="frm1" method="post">{% csrf_token %}
+            <form class="form-signin" role="form" id="frm1" action="confirm.html" method="post">{% csrf_token %}
                 <h2 class="form-signin-heading">Add Restaurant Entry</h2>
                 <input type="text" class="form-inline" name="Restaurant" placeholder="Restaurant Entry" required autofocus>
-                <button class="btn btn-lg btn-primary" class="form-inline" role="submit">Submit</button>
+                <button class="btn btn-lg btn-primary" class="form-inline" role="button">Submit</button>
                 
             </form>
 

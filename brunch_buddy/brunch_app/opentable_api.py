@@ -1,6 +1,7 @@
 import urllib2
 import json
 import sys
+import math
 
 class opentable_api:
 
@@ -28,10 +29,22 @@ class opentable_api:
 
         presponse=json.loads(response)
 
-        #get responses
-        #get response numbers
-
+        # Get the ceiling of total entries over the number of entries per page aka the number of pages
+        pages = int(math.ceil(presponse['total_entries']/float(presponse['per_page'])))
+        # Create the initial list of restaurants from the first page
         restaurants = presponse['restaurants']
+
+        # If there is more than one page, request each page
+        if pages > 1:
+            pages = range(2,pages+1)
+            for i in pages:
+                page_query = query_url + ";page=" + str(i)
+                response = urllib2.urlopen(page_query).read()
+                presponse=json.loads(response)
+                temp = presponse['restaurants']
+                # For each item returned from additional pages append to the list of restaurants
+                for j in temp:
+                    restaurants.append(j)
 
         for item in restaurants:
             phone_num = item["phone"]
@@ -56,7 +69,23 @@ class opentable_api:
 
         rest_list = list()
 
+        # Get the ceiling of total entries over the number of entries per page aka the number of pages
+        pages = int(math.ceil(presponse['total_entries']/float(presponse['per_page'])))
+        # Create the initial list of restaurants from the first page
         restaurants = presponse['restaurants']
+
+        # If there is more than one page, request each page
+        if pages > 1:
+            pages = range(2,pages+1)
+            for i in pages:
+                page_query = query_url + ";page=" + str(i)
+                response = urllib2.urlopen(page_query).read()
+                presponse=json.loads(response)
+                temp = presponse['restaurants']
+                # For each item returned from additional pages append to the list of restaurants
+                for j in temp:
+                    restaurants.append(j)
+
         for item in restaurants:
             area = item[area_key]
             if area == dc_value:
@@ -70,13 +99,14 @@ def main():
     #name = '?name=matchbox'
     test = opentable_api()
     print "TEST 1:"
-    params = {'city': 'Washington', 'name': 'matchbox'}
+    #params = {'city': 'Washington', 'name': 'matchbox'}
+    params = {'name': 'ted'}
     reserv_url = test.getResevationURL(params,'2025480369',0)
     print reserv_url
 
     print ""
     print "TEST 2:"
-    rlist = test.getRestaurants("matchbox")
+    rlist = test.getRestaurants("ted")
 
     for item in rlist:
         print item

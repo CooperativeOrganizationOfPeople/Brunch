@@ -8,26 +8,19 @@ from brunch_app.models import Restaurant
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django import forms
+import opentable_api
 
 #testing
-from django.http import HttpResponse
 
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
-    # template = loader.get_template('brunch_app/index.html')
-    # context = RequestContext(request, {
-    #     'bucket_list': bucket_list,
-    # })
-    # return HttpResponse(template.render(context))
 
     context = {'bucket_list': bucket_list}
     return render(request, 'brunch_app/index.html', context)
 
+
 def detail(request, restaurant_id):
-    # try:
-    #     restaurant = Restaurant.objects.get(pk=restaurant_id)
-    # except Restaurant.DoesNotExist:
-    #         raise Http404
+
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
     if request.method == 'POST': # If the form has been submitted...
         
@@ -35,10 +28,8 @@ def detail(request, restaurant_id):
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/detail.html', {'restaurant': restaurant})
 
-def add(request):
-    
-    if request.method == 'POST': 
 
+<<<<<<< HEAD
         # get serach term from user
         subject = request.POST['Restaurant']
 
@@ -47,30 +38,48 @@ def add(request):
         # 
 
         restaurant = Restaurant(name=subject, location="Junk", status=False)
+=======
+def add(request):
+>>>>>>> 184d26f36c407deab139a2f4804202c452a7804c
 
-        restaurant.save()
-        
-        destination = str(restaurant.id)+"/confirm.html"
-#        return HttpResponseRedirect('confirm.html', {'restaurant':restaurant}) # Redirect after POST
-        return HttpResponseRedirect(destination)
-        #return HttpResponseRedirect('confirm.html')
     return render(request, 'brunch_app/add.html')
 
 
-def confirm (request, restaurant_id):
+def confirm (request):
+#def confirm (request):
+    if request.method=="POST":
 
-    #initialize choices array
-    choices = []
-    #add entered restaurant to choices
-    restaurant = Restaurant.objects.get(pk=restaurant_id)
-    choices.append(restaurant)
-    #make call to Yelp API
-    #grab top x
-    #pass back to view for client decision
-    context = {'choices': choices}
-    return render(request, 'brunch_app/confirm.html', context)
+        print request.POST['Restaurant']
+    
+        #initialize choices array
+        choices = []
+        #add entered restaurant to choices
+        restaurant = Restaurant(name=request.POST['Restaurant'], location="Unknown", status=False)
+        #add now unsaved restaurant to choices array
+        choices.append(restaurant)
 
+        #make call to Yelp API
+        # Opentable for now
+        ot_api = opentable_api.opentable_api()
+        new_list = ot_api.getRestaurants(restaurant.name)
+        if len(new_list) > 5:
+            new_list = new_list[:5]
 
+        for item in new_list:
+            r = Restaurant(name=item, location="Junk", status=False)
+            
+            if (item.index(" - ")!=-1):
+                parts = item.split(" - ")
+                r.name = parts[0]
+                r.location = parts[1]
+            choices.append(r)
+        #grab top x
+        #pass back to view for client decision
+
+        context = {'choices': choices}
+        return render(request, 'brunch_app/confirm.html', context)
+
+    return HttpResponseRedirect('../../brunch_app')
 
 def edit(request, restaurant_id):
    
@@ -87,6 +96,16 @@ def edit(request, restaurant_id):
 
         restaurant.save()
         
-
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/edit.html', {'restaurant': restaurant})
+
+def confirmPart2 (request):
+
+    data = request.POST['choice']
+    attributes = data.split(',')
+    restaurant = Restaurant(name=attributes[0], location=attributes[1], status=False)
+    if (attributes[2]=='True'):
+        restaurant.status=True
+    restaurant.save()
+    return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
+
