@@ -13,21 +13,12 @@ from django import forms
 def index (request):
     bucket_list = Restaurant.objects.order_by('-name')[:20]
 
-    # template = loader.get_template('brunch_app/index.html')
-    # context = RequestContext(request, {
-    #     'bucket_list': bucket_list,
-    # })
-    # return HttpResponse(template.render(context))
-
     context = {'bucket_list': bucket_list}
     return render(request, 'brunch_app/index.html', context)
 
 
 def detail(request, restaurant_id):
-    # try:
-    #     restaurant = Restaurant.objects.get(pk=restaurant_id)
-    # except Restaurant.DoesNotExist:
-    #         raise Http404
+
     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
     if request.method == 'POST': # If the form has been submitted...
         
@@ -37,19 +28,6 @@ def detail(request, restaurant_id):
 
 
 def add(request):
-    
-    # if request.method == 'POST': 
-
-    #     # get serach term from user
-    #     subject = request.POST['Restaurant']
-
-
-    #     restaurant = Restaurant(name=subject, location="Junk", status=False)
-    #     restaurant.save()
-
-    #     #destination = str(restaurant.id)+"/confirm.html"
-    #     destination = "confirm.html"
-    #     return HttpResponseRedirect(destination,restaurant.name)
 
     return render(request, 'brunch_app/add.html')
 
@@ -67,22 +45,13 @@ def confirm (request):
         #add now unsaved restaurant to choices array
         choices.append(restaurant)
 
-        #delete saved instance for garbage collection
-
         #make call to Yelp API
         #grab top x
         #pass back to view for client decision
+
         context = {'choices': choices}
         return render(request, 'brunch_app/confirm.html', context)
-    # elif request.method =='POST':
 
-    #     print request.POST['choice']
-    #     #update the object based on selection
-    #     restaurant = Restaurant(name="Modified", location="Junk", status=False)
-        
-    #     #save the object
-    #     restaurant.save()
-    #     #HttpRedirect to home
     return HttpResponseRedirect('../../brunch_app')
 
 def edit(request, restaurant_id):
@@ -100,12 +69,14 @@ def edit(request, restaurant_id):
 
         restaurant.save()
         
-
         return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
     return render(request, 'brunch_app/edit.html', {'restaurant': restaurant})
 
 def confirmPart2 (request):
 
-    print request
+    data = request.POST['choice']
+    attributes = data.split(',')
+    restaurant = Restaurant(name=attributes[0], location=attributes[1], status=attributes[2])
+    restaurant.save()
     return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
 
