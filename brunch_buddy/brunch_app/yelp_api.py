@@ -29,7 +29,7 @@ class yelp_api():
         return response
 
     def min_query(self, term, limit=5, category='', radius=None, location='washington, dc', sort=0, offset=0):
-        '''A minimal query that returns a simple dictionary with the following key values. Every value is a string except for categories, which is a list. 
+        '''A minimal query that returns a simple dictionary with the following key values.
         The values returned include name, phone, display phone, location, categories, yelp rating, yelp review count, a rating image url, yelp url, and yelp mobile url
         To simplify/minimize location, we return the neighborhood if available, else we return the city.'''
         # create YelpAPI object
@@ -44,7 +44,12 @@ class yelp_api():
                 location = entry['location']['city']
             else:
                 location = 'No neighborhood or city listed :('
-            tmp_dict = {'name':entry['name'], 'phone':entry['phone'], 'display_phone':entry['display_phone'], 'location':location, 'categories':entry['categories'], 'rating':entry['rating'], 'review_count':entry['review_count'], 'rating_img_url':entry['rating_img_url'], 'url':entry['url'], 'mobile_url':entry['mobile_url']}
+            categories = ''
+            if 'categories' in entry.keys():
+                for value in entry['categories'][:-1]:
+                    categories = categories + value[0] + ', '
+                categories = categories + entry['categories'][-1][0]
+            tmp_dict = {'name':entry['name'], 'phone':entry['phone'], 'display_phone':entry['display_phone'], 'location':location, 'categories':categories, 'rating':entry['rating'], 'review_count':entry['review_count'], 'rating_img_url':entry['rating_img_url'], 'url':entry['url'], 'mobile_url':entry['mobile_url']}
             min_response.append(tmp_dict)
         return min_response        
 
