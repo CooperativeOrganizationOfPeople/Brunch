@@ -85,7 +85,7 @@ def confirmPart2 (request):
     attributes = data.split(',')
     restaurant = Restaurant()
     #restaurant.update_restaurant_from_dictionary({})
-    restaurant = Restaurant(name=attributes[0], location=attributes[1], status=False)
+    restaurant.update(name=attributes[0], location=attributes[1], status=False)
     #restaurant.name=attributes[0]
     #restaurant.location=attributes[1]
     #restaurant.status=False
