@@ -5,7 +5,51 @@
 		[
 			[
 				"rest",
+				"restaurant"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"Htt",
+				"HttpResponse"
+			],
+			[
+				"confirm",
+				"confirmPart2"
+			],
+			[
+				"resta",
+				"restaurant"
+			],
+			[
+				"ob",
+				"objects"
+			],
+			[
+				"restau",
 				"restaurant_id"
+			],
+			[
+				"res",
+				"restaurant"
+			],
+			[
+				"HT",
+				"HttpResponseRedirect"
+			],
+			[
+				"i",
+				"id"
+			],
+			[
+				"HTT",
+				"HttpResponse"
+			],
+			[
+				"Rest",
+				"Restaurant"
 			],
 			[
 				"get",
@@ -14,14 +58,6 @@
 			[
 				"Re",
 				"Restaurant"
-			],
-			[
-				"re",
-				"request"
-			],
-			[
-				"res",
-				"restaurant"
 			],
 			[
 				"W",
@@ -35,6 +71,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/views.py",
+			"settings":
+			{
+				"buffer_size": 2941,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/yelp_api.py",
+			"settings":
+			{
+				"buffer_size": 3654,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/models.py",
+			"settings":
+			{
+				"buffer_size": 862,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/index.html",
+			"settings":
+			{
+				"buffer_size": 3860,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/urls.py",
+			"settings":
+			{
+				"buffer_size": 474,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -63,12 +139,14 @@
 	},
 	"file_history":
 	[
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/opentable_api.py",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/models.py",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/add.html",
 		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/urls.py",
-		"/Users/nickfox/development/hackathon/Brunch/bootstrap_template_page2.html",
+		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/confirm.html",
 		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/views.py",
 		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/index.html",
-		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/add.html",
-		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/models.py",
+		"/Users/nickfox/development/hackathon/Brunch/bootstrap_template_page2.html",
 		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/old_index.html",
 		"/Users/nickfox/development/hackathon/Brunch/bootstrap_template.html",
 		"/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/detail.html",
@@ -87,7 +165,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -101,6 +179,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"span",
 			"<!DOCTYPE HTML>\n<html>\n	<head>\n	</head>\n\n	<body>\n\n	<h1>This is a test</h1>\n\n	</body>\n\n</html>\n",
 			">\n"
 		],
@@ -120,8 +199,155 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2941,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1567,
+								1567
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 729.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/yelp_api.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3654,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								771,
+								771
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 534.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/models.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								843,
+								843
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/templates/brunch_app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3860,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2101,
+								2101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 489.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/nickfox/development/hackathon/Brunch/brunch_buddy/brunch_app/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -197,7 +423,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 255.0,
+	"side_bar_width": 305.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
