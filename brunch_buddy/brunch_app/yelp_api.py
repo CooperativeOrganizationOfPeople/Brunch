@@ -19,13 +19,13 @@ class yelp_api():
         '''A full query that passes back the full JSON response from Yelp. For more information on 
         seacch and response values see http://www.yelp.com/developers/documentation/v2/search_api'''
         # create YelpAPI object
-        yelp_api = YelpAPI(self.consumer_key, self.consumer_secret, self.token, self.token_secret)
+        yelp_query = YelpAPI(self.consumer_key, self.consumer_secret, self.token, self.token_secret)
 
         category=''
         limit=5
         radius=None
         offset = 0
-        response = yelp_api.search_query(term=term, category_filter=category, limit=limit, radius_filter=radius, location=location, sort=sort, offset=offset)
+        response = yelp_query.search_query(term=term, category_filter=category, limit=limit, radius_filter=radius, location=location, sort=sort, offset=offset)
         return response
 
     def min_query(self, term, limit=5, category='', radius=None, location='washington, dc', sort=0, offset=0):
@@ -33,9 +33,10 @@ class yelp_api():
         The values returned include name, phone, display phone, location, categories, yelp rating, yelp review count, a rating image url, yelp url, and yelp mobile url
         To simplify/minimize location, we return the neighborhood if available, else we return the city.'''
         # create YelpAPI object
-        yelp_api = YelpAPI(self.consumer_key, self.consumer_secret, self.token, self.token_secret)
+        yelp_query = YelpAPI(self.consumer_key, self.consumer_secret, self.token, self.token_secret)
 
-        response = yelp_api.search_query(term=term, category_filter=category, limit=limit, radius_filter=radius, location=location, sort=sort, offset=offset)
+        response = yelp_query.search_query(term=term, category_filter=category, limit=limit, radius_filter=radius, location=location, sort=sort, offset=offset)
+        print response
         min_response = []
         for entry in response['businesses']:
             if 'neighborhoods' in entry['location'].keys():
@@ -49,6 +50,10 @@ class yelp_api():
                 for value in entry['categories'][:-1]:
                     categories = categories + value[0] + ', '
                 categories = categories + entry['categories'][-1][0]
+            key_list = ['name', 'phone', 'display_phone', 'rating', 'review_count', 'rating_img_url', 'url', 'mobile_url']
+            for key in key_list:
+                if key not in entry.keys():
+                    entry[key] = 'None'
             tmp_dict = {'name':entry['name'], 'phone':entry['phone'], 'display_phone':entry['display_phone'], 'location':location, 'categories':categories, 'rating':entry['rating'], 'review_count':entry['review_count'], 'rating_img_url':entry['rating_img_url'], 'url':entry['url'], 'mobile_url':entry['mobile_url']}
             min_response.append(tmp_dict)
         return min_response        
