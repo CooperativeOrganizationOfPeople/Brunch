@@ -37,12 +37,12 @@ def confirm (request):
 #def confirm (request):
     if request.method=="POST":
 
-        print request.POST['Restaurant']
+        #print request.POST['Restaurant']
     
         #initialize choices array
         choices = []
         #add entered restaurant to choices
-        restaurant = Restaurant(name=request.POST['Restaurant'], location="Unknown", status=False)
+        restaurant = Restaurant(name=request.POST['Restaurant'], location="Unknown")
         #add now unsaved restaurant to choices array
         choices.append(restaurant)
 
@@ -51,12 +51,14 @@ def confirm (request):
         response_list = yelp_obj.min_query(term=restaurant.name)
 
         for entry in response_list:
-            r = Restaurant(name=entry['name'], location=entry['location'], status=False)
+            r = Restaurant(name=entry['name'], location=entry['location'], phone=entry['display_phone'], rating=entry['rating'], review_count=entry['review_count'])
+
             choices.append(r)
         #grab top x
         #pass back to view for client decision
 
         context = {'choices': choices}
+        print 'confirm context value:', context
         return render(request, 'brunch_app/confirm.html', context)
 
     return HttpResponseRedirect('../../brunch_app')
@@ -82,13 +84,16 @@ def edit(request, restaurant_id):
 def confirmPart2 (request):
 
     data = request.POST['choice']
+    print "DATA:", data
     attributes = data.split(',')
     restaurant = Restaurant()
+    print "ATTRIBUTES:\n\n", attributes
     #restaurant.update_restaurant_from_dictionary({})
-    restaurant.update(name=attributes[0], location=attributes[1], status=False)
+    restaurant.update(name=attributes[0], location=attributes[1], phone=attributes[2], rating=attributes[3], review_count=attributes[4], status='Not Yet!')
     #restaurant.name=attributes[0]
     #restaurant.location=attributes[1]
     #restaurant.status=False
+    restaurant.rating=0
     restaurant.save()
     return HttpResponseRedirect('../../brunch_app/') # Redirect after POST
 

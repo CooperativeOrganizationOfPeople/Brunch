@@ -55,8 +55,8 @@
                 {% if choices %}
                     {% for restaurant in choices %}
     
-                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ restaurant.name }},{{ restaurant.location }},{{ restaurant.status }}" />
-                        <label for="choice{{ forloop.counter }}">{{ restaurant.name }} - {{ restaurant.location }} - {{ restaurant.status }}</label><br />
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ restaurant.name }},{{ restaurant.location }},{{ restaurant.phone }},{{ restaurant.rating }},{{ restaurant.review_count }}" />
+                        <label for="choice{{ forloop.counter }}">{{ restaurant.name }} - {{ restaurant.location }} - {{ restaurant.phone }}</label><br />
 
                      <!-- <li>{{ restaurant.name }} - {{ restaurnat.location }} - {{ restaurant.status }}</li> -->
                     {% endfor %}
